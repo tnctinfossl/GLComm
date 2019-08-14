@@ -16,16 +16,19 @@ make -j
 #通信内容
 バイナリ形式で
 ```
-(Root)::= (Direction) (RobotPair) n:uint8 (RobotID Position)^n (Command)
+(Frame)::= (Direction) (Ball) (RobotID Position) n:uint8 (RobotID Position)^n (Command)
 (Direction) ::= RightToLeft| LeftToRight 
-
 (Target)::= (NamedPosition) | (Position) | (RobotID)
 (NamedPosition) ::= Center|GoalRight|GoalLeft
 (Position)::= X:float Y:float Theta:float
 (RobotID)::=(Team) number:uint8
 (Team) ::=Blue| Yellow
+(Ball) ::=x:float y:float
 
-(Command)::=(Halt)|(Move)|..  
-Move::=Target
+(Command)::=(Move)|(Send)|(Receive)|(Block)|..  
+(Move)::=(Target)
+(Send)::=(Target)
+(Block)::=(Target)
+
 ```
 補足: `()`は変数、`a|b`は
